@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consultá productos, precios y horarios. Estamos para ayudarte a preparar tu próxima visita.">
+    <title>
+      Estamos para orientarte. | Súper Yacón
+    </title>
+    <link rel="icon" type="image/png" href="img/logo-yacon.png">
+    <link rel="stylesheet" href="css/contactostyle.css">
+  </head>
+  <body>
+    <div class="franja">
+      <div class="contenedor">
+        Buenos precios. Más cerca de vos.
+        <span>
+          El Salvador
+        </span>
+      </div>
+    </div>
+    <header class="cabecera">
+      <div class="contenedor cabecera-interior">
+        <a class="marca" href="index.html">
+          <img src="img/logo-yacon.png" alt="Súper Yacón — Inicio" width="447" height="447">
+        </a>
+        <nav>
+          <a href="index.html">
+            Inicio
+          </a>
+          <a href="catalogo.html">
+            Catálogo
+          </a>
+          <a href="sucursales.html">
+            Sucursales
+          </a>
+          <a class="actual" href="contacto.html">
+            Contacto
+          </a>
+        </nav>
+        <a class="boton boton-pequeno visita" href="sucursales.html">
+          Encontrá tu Yacón
+          <span>
+            ↗
+          </span>
+        </a>
+      </div>
+    </header>
+    <main id="contenido">
+      <section class="intro">
+        <div class="contenedor">
+          <p class="ruta">
+            <a href="index.html">
+              Inicio
+            </a>
+            / Contacto
+          </p>
+          <h1>
+            Estamos para orientarte.
+          </h1>
+          <p>
+            Consultá productos, precios y horarios. Estamos para ayudarte a preparar tu próxima visita.
+          </p>
+        </div>
+      </section>
+      <div class="contenedor seccion contacto-columnas">
+        <aside class="contacto-datos">
+          <p class="etiqueta">
+            HABLEMOS
+          </p>
+          <h2>
+            La atención empieza con un hola.
+          </h2>
+          <p>
+            Consultá precios actuales, disponibilidad y horarios por los canales publicados por la empresa.
+          </p>
+          <dl>
+            <dt>
+              Teléfono
+            </dt>
+            <dd>
+              <a href="tel:+50323140811">
+                +503 2314 0811
+              </a>
+            </dd>
+            <dt>
+              Correo electrónico
+            </dt>
+            <dd>
+              <a href="mailto:ventas@superyacon.com">
+                ventas@superyacon.com
+              </a>
+            </dd>
+            <dt>
+              Redes sociales
+            </dt>
+            <dd>
+              <a href="https://www.facebook.com/superyacon/">
+                Facebook de Súper Yacón ↗
+              </a>
+            </dd>
+            <dd>
+              <a href="https://www.instagram.com/superyacon/">
+                Instagram de Súper Yacón ↗
+              </a>
+            </dd>
+          </dl>
+          <a class="boton boton-azul" href="sucursales.html">
+            Encontrá una sucursal →
+          </a>
+        </aside>
+        <section class="formulario">
+          <h2>
+            Escribinos
+          </h2>
+          <p id="ayuda-envio">Al continuar se abrirá tu aplicación de correo. Revisá el mensaje y envialo desde allí a ventas@superyacon.com.</p>
+          <p class="nota">
+            Los campos marcados con * son obligatorios.
+          </p>
+          <!-- El navegador valida los campos; la aplicación de correo permite enviar la consulta. -->
+          <form action="mailto:ventas@superyacon.com" method="post" enctype="text/plain" >
+            <div class="campos-dobles">
+              <div class="campo">
+                <label for="nombre">
+                  Nombre *
+                </label>
+                <input type="text" id="nombre" name="nombre" required minlength="2" maxlength="60" placeholder="Tu nombre" autocomplete="name">
+              </div>
+              <div class="campo">
+                <label for="correo">
+                  Correo electrónico *
+                </label>
+                <input type="email" id="correo" name="correo" required maxlength="100" placeholder="nombre@correo.com" autocomplete="email">
+              </div>
+            </div>
+            <div class="campos-dobles">
+              <div class="campo">
+                <label for="telefono">
+                  Teléfono (opcional)
+                </label>
+                <input type="tel" id="telefono" name="telefono" pattern="[0-9]{8}" maxlength="8" placeholder="Ej.: 20000000" autocomplete="tel" title="Escribí 8 dígitos, sin espacios ni guiones." >
+                <small id="ayuda-telefono">
+                  8 dígitos, sin espacios ni guiones.
+                </small>
+              </div>
+              <div class="campo">
+                <label for="sucursal">
+                  Zona de interés *
+                </label>
+                <select id="sucursal" name="sucursal" required>
+                  <option value="">
+                    Seleccioná una zona
+                  </option>
+                  <option>
+                    San José Villanueva
+                  </option>
+                  <option>
+                    Zaragoza
+                  </option>
+                  <option>
+                    Rosario de Mora
+                  </option>
+                  <option>
+                    Comasagua
+                  </option>
+                  <option>
+                    Huizúcar
+                  </option>
+                </select>
+              </div>
+            </div>
+            <fieldset>
+              <legend>
+                Motivo de la consulta *
+              </legend>
+              <div class="opciones">
+                <label>
+                  <input type="radio" name="motivo" value="productos" required>
+                  Productos
+                </label>
+                <label>
+                  <input type="radio" name="motivo" value="horarios">
+                  Horarios
+                </label>
+                <label>
+                  <input type="radio" name="motivo" value="otro">
+                  Otro
+                </label>
+              </div>
+            </fieldset>
+            <div class="campo">
+              <label for="mensaje">
+                Mensaje *
+              </label>
+              <textarea id="mensaje" name="mensaje" rows="5" required minlength="20" maxlength="500" placeholder="Contanos qué producto buscás o qué necesitás consultar."></textarea>
+              <small id="ayuda-mensaje">
+                Entre 20 y 500 caracteres.
+              </small>
+            </div>
+            <label class="aceptacion">
+              <input type="checkbox" name="respuesta" value="si" required>
+              Podés contactarme por correo para responder esta consulta. *
+            </label>
+            <button class="boton boton-azul" type="submit">
+              Continuar en mi correo →
+            </button>
+          </form>
+        </section>
+      </div>
+    </main>
+    <footer class="pie">
+      <div class="contenedor pie-principal">
+        <div class="pie-marca">
+          <img src="img/logo-yacon.png" alt="Súper Yacón" width="447" height="447">
+          <p>
+            Variedad para tu hogar.
+            <br>
+            Precios accesibles, cerca de vos.
+          </p>
+        </div>
+        <div>
+          <h2>
+            Explorá
+          </h2>
+          <a href="catalogo.html">
+            Catálogo
+          </a>
+          <a href="sucursales.html">
+            Sucursales
+          </a>
+          <a href="contacto.html">
+            Contacto
+          </a>
+        </div>
+        <div>
+          <h2>
+            Hablemos
+          </h2>
+          <a href="tel:+50323140811">
+            +503 2314 0811
+          </a>
+          <a href="mailto:ventas@superyacon.com">
+            ventas@superyacon.com
+          </a>
+          <a href="https://www.facebook.com/superyacon/">
+            Facebook de Súper Yacón ↗
+          </a>
+          <a href="https://www.instagram.com/superyacon/">
+            Instagram de Súper Yacón ↗
+          </a>
+        </div>
+      </div>
+      <div class="contenedor pie-legal">
+        <p>Súper Yacón · Variedad y precios accesibles, cerca de vos.</p>
+      </div>
+    </footer>
+  </body>
+</html>
