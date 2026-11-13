@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="es-SV">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Comprá productos para tu hogar en Súper Yacón. Encontrá ofertas y recogé tu compra en sucursal."
+    />
+    <meta name="theme-color" content="#29358f" />
+    <title>Administración | Súper Yacón</title>
+    <link rel="icon" type="image/png" href="img/logo-yacon.png" />
+    <link rel="stylesheet" href="css/adminstyle.css" />
+  </head>
+  <body data-pagina="admin">
+    <div class="franja">
+      <div class="contenedor">
+        <span>Buenos precios. Más cerca de vos.</span
+        ><a href="sucursales.html"
+          >Recogé en tu sucursal <span aria-hidden="true">↗</span></a
+        >
+      </div>
+    </div>
+    <header class="cabecera">
+      <div class="contenedor cabecera-interior">
+        <a class="marca" href="index.html"
+          ><img
+            src="img/logo-yacon.png"
+            alt="Súper Yacón — Inicio"
+            width="447"
+            height="447"
+        /></a>
+        <form class="buscador" action="catalogo.html" role="search">
+          <label class="solo-lectura" for="busqueda">Buscar productos</label
+          ><input
+            id="busqueda"
+            name="q"
+            type="search"
+            placeholder="¿Qué necesitás para tu casa?"
+            maxlength="100"
+          /><button type="submit" aria-label="Buscar">
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <circle cx="10" cy="10" r="6" />
+              <path d="m15 15 6 6" />
+            </svg>
+          </button>
+        </form>
+        <div class="cabecera-acciones">
+          <a class="acceso-cuenta" href="cuenta.html"
+            ><svg
+              viewBox="0 0 24 24"
+              width="23"
+              height="23"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="7" r="4" />
+              <path d="M4 23v-3a8 8 0 0 1 16 0v3" /></svg
+            ><span data-cuenta>Ingresar</span></a
+          ><a class="acceso-carrito" href="compra.html"
+            ><svg
+              viewBox="0 0 24 24"
+              width="25"
+              height="25"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              aria-hidden="true"
+            >
+              <path d="M2 3h3l3 13h12l2-10H6" />
+              <circle cx="10" cy="21" r="1" />
+              <circle cx="19" cy="21" r="1" /></svg
+            ><span>Mi carrito</span><strong data-cantidad-carrito>0</strong></a
+          >
+        </div>
+      </div>
+      <nav class="navegacion" aria-label="Navegación principal">
+        <div class="contenedor">
+          <a href="index.html" data-nav="index">Inicio</a
+          ><a href="catalogo.html" data-nav="catalogo">Todos los productos</a
+          ><a href="catalogo.html?ofertas=1">Ofertas</a
+          ><a href="sucursales.html" data-nav="sucursales">Sucursales</a
+          ><a href="contacto.html" data-nav="contacto">Contacto</a
+          ><a href="admin.html" data-admin hidden>Administrar</a
+          ><span class="nav-nota">Tu compra, lista para recoger</span>
+        </div>
+      </nav>
+    </header>
+    <div class="titulo-pagina">
+      <div class="contenedor">
+        <p class="ruta"><a href="index.html">Inicio</a> / Administración</p>
+        <h1>Administración</h1>
+        <p>Catálogo, existencias y pedidos de Súper Yacón.</p>
+      </div>
+    </div>
+    <main class="contenedor seccion">
+      <section id="sin-permiso" class="tarjeta vacio">
+        <h2>Acceso administrativo</h2>
+        <p>Este espacio está disponible para cuentas autorizadas.</p>
+        <a class="boton" href="cuenta.html">Ingresar a mi cuenta</a>
+      </section>
+      <div id="administracion" hidden>
+        <p id="estado-admin" class="estado" role="status"></p>
+        <div class="estadisticas">
+          <div>
+            <span>Productos</span><strong id="total-productos">0</strong>
+          </div>
+          <div>
+            <span>Stock bajo o agotado</span><strong id="stock-bajo">0</strong>
+          </div>
+          <div>
+            <span>Pedidos por entregar</span
+            ><strong id="total-pedidos">0</strong>
+          </div>
+        </div>
+        <div class="barra-admin">
+          <a href="#editor" class="enlace-fuerte">Gestionar productos ↓</a
+          ><a href="#gestion-pedidos" class="enlace-fuerte">Ver pedidos ↓</a
+          ><button id="cargar-datos" class="boton secundario" type="button">
+            Cargar catálogo inicial
+          </button>
+        </div>
+        <div class="admin-rejilla">
+          <section id="editor" class="tarjeta">
+            <h2 id="titulo-editor">Nuevo producto</h2>
+            <form id="form-producto">
+              <label for="producto-id">Identificador</label
+              ><input
+                id="producto-id"
+                name="id"
+                required
+                pattern="[a-z0-9-]{1,60}"
+                maxlength="60"
+                placeholder="ejemplo: leche-pinito"
+              /><small
+                >Letras minúsculas, números y guiones. No cambia al
+                editar.</small
+              ><label for="producto-nombre">Nombre</label
+              ><input
+                id="producto-nombre"
+                name="nombre"
+                required
+                minlength="2"
+                maxlength="140"
+              /><label for="producto-categoria">Categoría</label
+              ><select id="producto-categoria" name="categoria" required>
+                <option>Despensa</option>
+                <option>Lácteos</option>
+                <option>Bebidas</option>
+                <option>Limpieza</option>
+                <option>Cuidado personal</option></select
+              ><label for="producto-presentacion">Presentación</label
+              ><input
+                id="producto-presentacion"
+                name="presentacion"
+                required
+                maxlength="100"
+                placeholder="Ej.: 350 g"
+              /><label for="producto-imagen">Fotografía</label
+              ><select id="producto-imagen" name="imagen" required>
+                <option value="">Cargando fotografías…</option>
+              </select>
+              <div class="dos-campos">
+                <label
+                  >Precio ($)<input
+                    name="precio"
+                    type="number"
+                    min="0.01"
+                    max="10000"
+                    step="0.01"
+                    required /></label
+                ><label
+                  >Precio anterior ($)<input
+                    name="anterior"
+                    type="number"
+                    min="0"
+                    max="10000"
+                    step="0.01"
+                    value="0"
+                /></label>
+              </div>
+              <label for="producto-stock">Unidades disponibles</label
+              ><input
+                id="producto-stock"
+                name="stock"
+                type="number"
+                min="0"
+                max="9999"
+                step="1"
+                required
+              />
+              <div class="checks">
+                <label class="check"
+                  ><input name="activo" type="checkbox" checked /> Visible en la
+                  tienda</label
+                ><label class="check"
+                  ><input name="destacado" type="checkbox" /> Destacado en
+                  Inicio</label
+                >
+              </div>
+              <div class="botones-form">
+                <button id="guardar-producto" class="boton" type="submit">
+                  Crear producto</button
+                ><button
+                  id="nuevo-producto"
+                  class="boton secundario"
+                  type="button"
+                >
+                  Limpiar
+                </button>
+              </div>
+            </form>
+          </section>
+          <section>
+            <h2>Inventario</h2>
+            <label for="buscar-admin">Buscar producto</label
+            ><input
+              id="buscar-admin"
+              type="search"
+              placeholder="Nombre del producto"
+            />
+            <div class="tabla-contenedor">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="filas-productos"></tbody>
+              </table>
+            </div>
+            <p id="sin-productos" class="estado">
+              No hay productos. Podés crear uno o cargar el catálogo inicial.
+            </p>
+          </section>
+        </div>
+        <section id="gestion-pedidos" class="seccion">
+          <h2>Gestión de pedidos</h2>
+          <p id="sin-pedidos" class="estado">Todavía no hay pedidos.</p>
+          <div id="pedidos-admin" class="lista-pedidos"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="pie">
+      <div class="contenedor pie-interior">
+        <div class="pie-marca">
+          <img
+            src="img/logo-yacon.png"
+            width="64"
+            height="64"
+            alt="Súper Yacón"
+          />
+          <p>
+            Lo que necesitás para tu hogar.<br /><strong
+              >Buenos precios, cerca de vos.</strong
+            >
+          </p>
+        </div>
+        <div>
+          <h2>Comprá en Yacón</h2>
+          <a href="catalogo.html">Todos los productos</a
+          ><a href="catalogo.html?ofertas=1">Ofertas</a
+          ><a href="sucursales.html">Nuestras sucursales</a>
+        </div>
+        <div>
+          <h2>Estamos para ayudarte</h2>
+          <a href="tel:+50323140811">2314 0811</a
+          ><a href="mailto:ventas@superyacon.com">ventas@superyacon.com</a
+          ><a
+            href="https://www.facebook.com/superyacon/"
+            target="_blank"
+            rel="noopener"
+            >Facebook ↗</a
+          ><a
+            href="https://www.instagram.com/superyacon/"
+            target="_blank"
+            rel="noopener"
+            >Instagram ↗</a
+          >
+        </div>
+      </div>
+      <div class="contenedor pie-base">
+        <span>© Súper Yacón</span
+        ><span>El Salvador · Precios en dólares estadounidenses</span>
+      </div>
+    </footer>
+    <div id="aviso" class="aviso" role="status" aria-live="polite"></div>
+    <noscript
+      ><p class="contenedor estado">
+        Activá JavaScript en tu navegador para consultar productos y realizar
+        compras.
+      </p></noscript
+    >
+    <script type="module" src="js/admin.js"></script>
+  </body>
+</html>

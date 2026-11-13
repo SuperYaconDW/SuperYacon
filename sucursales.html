@@ -1,260 +1,182 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-SV">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Encontrá la zona que mejor te queda y prepará tu próxima visita a Súper Yacón en El Salvador.">
-    <title>
-      Tu Yacón, más cerca. | Súper Yacón
-    </title>
-    <link rel="icon" type="image/png" href="img/logo-yacon.png">
-    <link rel="stylesheet" href="css/sucursalesstyle.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Comprá productos para tu hogar en Súper Yacón. Encontrá ofertas y recogé tu compra en sucursal."
+    />
+    <meta name="theme-color" content="#29358f" />
+    <title>Nuestras sucursales | Súper Yacón</title>
+    <link rel="icon" type="image/png" href="img/logo-yacon.png" />
+    <link rel="stylesheet" href="css/sucursalesstyle.css" />
   </head>
-  <body>
+  <body data-pagina="sucursales">
     <div class="franja">
       <div class="contenedor">
-        Buenos precios. Más cerca de vos.
-        <span>
-          El Salvador
-        </span>
+        <span>Buenos precios. Más cerca de vos.</span
+        ><a href="sucursales.html"
+          >Recogé en tu sucursal <span aria-hidden="true">↗</span></a
+        >
       </div>
     </div>
     <header class="cabecera">
       <div class="contenedor cabecera-interior">
-        <a class="marca" href="index.html">
-          <img src="img/logo-yacon.png" alt="Súper Yacón — Inicio" width="447" height="447">
-        </a>
-        <nav>
-          <a href="index.html">
-            Inicio
-          </a>
-          <a href="catalogo.html">
-            Catálogo
-          </a>
-          <a class="actual" href="sucursales.html">
-            Sucursales
-          </a>
-          <a href="contacto.html">
-            Contacto
-          </a>
-        </nav>
-        <a class="boton boton-pequeno visita" href="sucursales.html">
-          Encontrá tu Yacón
-          <span>
-            ↗
-          </span>
-        </a>
+        <a class="marca" href="index.html"
+          ><img
+            src="img/logo-yacon.png"
+            alt="Súper Yacón — Inicio"
+            width="447"
+            height="447"
+        /></a>
+        <form class="buscador" action="catalogo.html" role="search">
+          <label class="solo-lectura" for="busqueda">Buscar productos</label
+          ><input
+            id="busqueda"
+            name="q"
+            type="search"
+            placeholder="¿Qué necesitás para tu casa?"
+            maxlength="100"
+          /><button type="submit" aria-label="Buscar">
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <circle cx="10" cy="10" r="6" />
+              <path d="m15 15 6 6" />
+            </svg>
+          </button>
+        </form>
+        <div class="cabecera-acciones">
+          <a class="acceso-cuenta" href="cuenta.html"
+            ><svg
+              viewBox="0 0 24 24"
+              width="23"
+              height="23"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="7" r="4" />
+              <path d="M4 23v-3a8 8 0 0 1 16 0v3" /></svg
+            ><span data-cuenta>Ingresar</span></a
+          ><a class="acceso-carrito" href="compra.html"
+            ><svg
+              viewBox="0 0 24 24"
+              width="25"
+              height="25"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              aria-hidden="true"
+            >
+              <path d="M2 3h3l3 13h12l2-10H6" />
+              <circle cx="10" cy="21" r="1" />
+              <circle cx="19" cy="21" r="1" /></svg
+            ><span>Mi carrito</span><strong data-cantidad-carrito>0</strong></a
+          >
+        </div>
       </div>
-    </header>
-    <main id="contenido">
-      <section class="intro">
+      <nav class="navegacion" aria-label="Navegación principal">
         <div class="contenedor">
-          <p class="ruta">
-            <a href="index.html">
-              Inicio
-            </a>
-            / Sucursales
-          </p>
-          <h1>
-            Tu Yacón, más cerca.
-          </h1>
-          <p>
-            Encontrá la zona que mejor te queda y prepará tu próxima visita a Súper Yacón en El Salvador.
-          </p>
+          <a href="index.html" data-nav="index">Inicio</a
+          ><a href="catalogo.html" data-nav="catalogo">Todos los productos</a
+          ><a href="catalogo.html?ofertas=1">Ofertas</a
+          ><a href="sucursales.html" data-nav="sucursales" aria-current="page"
+            >Sucursales</a
+          ><a href="contacto.html" data-nav="contacto">Contacto</a
+          ><a href="admin.html" data-admin hidden>Administrar</a
+          ><span class="nav-nota">Tu compra, lista para recoger</span>
         </div>
-      </section>
-      <div class="contenedor seccion">
-        <div class="titulo-fila">
-          <div>
-            <p class="etiqueta">
-              COMPRÁ CERCA DE CASA
-            </p>
-            <h2>
-              Cinco zonas para encontrarnos.
-            </h2>
-          </div>
-          <a class="enlace" href="tel:+50323140811">
-            Consultas: 2314 0811 ↗
-          </a>
-        </div>
-        <p class="nota">
-          Esta lista agrupa zonas; puede haber más de un local en una misma zona. Los enlaces de mapas abren una búsqueda del supermercado.
+      </nav>
+    </header>
+    <div class="titulo-pagina">
+      <div class="contenedor">
+        <p class="ruta">
+          <a href="index.html">Inicio</a> / Tu Yacón más cercano
         </p>
-        <div class="sucursales">
-          <article class="sucursal">
-            <div class="sucursal-encabezado">
-              <span class="numero-sucursal">
-                01
-              </span>
-              <p class="etiqueta">
-                La Libertad
-              </p>
-            </div>
-            <h3>
-              San José Villanueva
-            </h3>
-            <p>
-              Una de las zonas anunciadas en los perfiles oficiales de Súper Yacón.
-            </p>
-            <p class="nota">
-              Consultá dirección y horario antes de tu visita.
-            </p>
-            <a class="enlace" href="https://www.google.com/maps/search/?api=1&amp;query=Super%20Yacon%20San%20Jos%C3%A9%20Villanueva%20El%20Salvador">
-              Buscar San José Villanueva en el mapa ↗
-            </a>
-          </article>
-          <article class="sucursal">
-            <div class="sucursal-encabezado">
-              <span class="numero-sucursal">
-                02
-              </span>
-              <p class="etiqueta">
-                La Libertad
-              </p>
-            </div>
-            <h3>
-              Zaragoza
-            </h3>
-            <p>
-              El perfil de Instagram menciona Express Zaragoza y Distribuidora Zaragoza.
-            </p>
-            <p class="nota">
-              Confirmá cuál local te queda mejor y su horario.
-            </p>
-            <a class="enlace" href="https://www.google.com/maps/search/?api=1&amp;query=Super%20Yacon%20Zaragoza%20El%20Salvador">
-              Buscar Zaragoza en el mapa ↗
-            </a>
-          </article>
-          <article class="sucursal">
-            <div class="sucursal-encabezado">
-              <span class="numero-sucursal">
-                03
-              </span>
-              <p class="etiqueta">
-                San Salvador
-              </p>
-            </div>
-            <h3>
-              Rosario de Mora
-            </h3>
-            <p>
-              Zona anunciada en Facebook y registrada en el directorio de Banco Promerica.
-            </p>
-            <p class="nota">
-              Consultá dirección y horario antes de tu visita.
-            </p>
-            <a class="enlace" href="https://www.google.com/maps/search/?api=1&amp;query=Super%20Yacon%20Rosario%20de%20Mora%20El%20Salvador">
-              Buscar Rosario de Mora en el mapa ↗
-            </a>
-          </article>
-          <article class="sucursal">
-            <div class="sucursal-encabezado">
-              <span class="numero-sucursal">
-                04
-              </span>
-              <p class="etiqueta">
-                La Libertad
-              </p>
-            </div>
-            <h3>
-              Comasagua
-            </h3>
-            <p>
-              Frente a la alcaldía municipal, según el anuncio de apertura del 3 de mayo de 2025.
-            </p>
-            <p class="nota">
-              Consultá el horario vigente antes de tu visita.
-            </p>
-            <a class="enlace" href="https://www.google.com/maps/search/?api=1&amp;query=Super%20Yacon%20Comasagua%20El%20Salvador">
-              Buscar Comasagua en el mapa ↗
-            </a>
-          </article>
-          <article class="sucursal">
-            <div class="sucursal-encabezado">
-              <span class="numero-sucursal">
-                05
-              </span>
-              <p class="etiqueta">
-                La Libertad
-              </p>
-            </div>
-            <h3>
-              Huizúcar
-            </h3>
-            <p>
-              Avenida Santos Guzmán, calle principal, según la publicación oficial de apertura.
-            </p>
-            <p class="nota">
-              Horario anunciado: 8:00 a. m. a 7:00 p. m. Confirmá días de atención.
-            </p>
-            <a class="enlace" href="https://www.google.com/maps/search/?api=1&amp;query=Super%20Yacon%20Huiz%C3%BAcar%20El%20Salvador">
-              Buscar Huizúcar en el mapa ↗
-            </a>
-          </article>
-        </div>
-        <aside class="aviso">
-          <p>
-            <strong>
-              Planeá tu visita.
-            </strong>
-            Los horarios pueden cambiar en días festivos. Para confirmar una dirección o la existencia de un producto, llamá al
-            <a href="tel:+50323140811">
-              2314 0811
-            </a>
-            o visitá el
-            <a href="https://www.facebook.com/superyacon/">
-              Facebook oficial
-            </a>
-            .
-          </p>
-        </aside>
+        <h1>Tu Yacón más cercano</h1>
+        <p>
+          Encontrá la ubicación que te queda mejor y elegila al confirmar tu
+          compra.
+        </p>
       </div>
+    </div>
+    <main class="contenedor seccion">
+      <div class="nota-contacto">
+        <strong>¿Necesitás indicaciones?</strong
+        ><span>Llamanos al <a href="tel:+50323140811">2314 0811</a>.</span>
+      </div>
+      <p id="estado-sucursales" class="estado" role="status">
+        Cargando sucursales…
+      </p>
+      <div id="sucursales" class="rejilla-sucursales"></div>
+      <button
+        id="reintentar-sucursales"
+        class="enlace-boton recargar"
+        type="button"
+      >
+        Actualizar sucursales
+      </button>
     </main>
+
     <footer class="pie">
-      <div class="contenedor pie-principal">
+      <div class="contenedor pie-interior">
         <div class="pie-marca">
-          <img src="img/logo-yacon.png" alt="Súper Yacón" width="447" height="447">
+          <img
+            src="img/logo-yacon.png"
+            width="64"
+            height="64"
+            alt="Súper Yacón"
+          />
           <p>
-            Variedad para tu hogar.
-            <br>
-            Precios accesibles, cerca de vos.
+            Lo que necesitás para tu hogar.<br /><strong
+              >Buenos precios, cerca de vos.</strong
+            >
           </p>
         </div>
         <div>
-          <h2>
-            Explorá
-          </h2>
-          <a href="catalogo.html">
-            Catálogo
-          </a>
-          <a href="sucursales.html">
-            Sucursales
-          </a>
-          <a href="contacto.html">
-            Contacto
-          </a>
+          <h2>Comprá en Yacón</h2>
+          <a href="catalogo.html">Todos los productos</a
+          ><a href="catalogo.html?ofertas=1">Ofertas</a
+          ><a href="sucursales.html">Nuestras sucursales</a>
         </div>
         <div>
-          <h2>
-            Hablemos
-          </h2>
-          <a href="tel:+50323140811">
-            +503 2314 0811
-          </a>
-          <a href="mailto:ventas@superyacon.com">
-            ventas@superyacon.com
-          </a>
-          <a href="https://www.facebook.com/superyacon/">
-            Facebook de Súper Yacón ↗
-          </a>
-          <a href="https://www.instagram.com/superyacon/">
-            Instagram de Súper Yacón ↗
-          </a>
+          <h2>Estamos para ayudarte</h2>
+          <a href="tel:+50323140811">2314 0811</a
+          ><a href="mailto:ventas@superyacon.com">ventas@superyacon.com</a
+          ><a
+            href="https://www.facebook.com/superyacon/"
+            target="_blank"
+            rel="noopener"
+            >Facebook ↗</a
+          ><a
+            href="https://www.instagram.com/superyacon/"
+            target="_blank"
+            rel="noopener"
+            >Instagram ↗</a
+          >
         </div>
       </div>
-      <div class="contenedor pie-legal">
-        <p>Súper Yacón · Variedad y precios accesibles, cerca de vos.</p>
+      <div class="contenedor pie-base">
+        <span>© Súper Yacón</span
+        ><span>El Salvador · Precios en dólares estadounidenses</span>
       </div>
     </footer>
+    <div id="aviso" class="aviso" role="status" aria-live="polite"></div>
+    <noscript
+      ><p class="contenedor estado">
+        Activá JavaScript en tu navegador para consultar productos y realizar
+        compras.
+      </p></noscript
+    >
+    <script type="module" src="js/sucursales.js"></script>
   </body>
 </html>

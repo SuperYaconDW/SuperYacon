@@ -1,299 +1,202 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-SV">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conocé una selección de productos publicados por Súper Yacón. Comprá y consultá precios vigentes directamente en la tienda.">
-    <title>
-      Variedad que va con vos. | Súper Yacón
-    </title>
-    <link rel="icon" type="image/png" href="img/logo-yacon.png">
-    <link rel="stylesheet" href="css/catalogostyle.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Comprá productos para tu hogar en Súper Yacón. Encontrá ofertas y recogé tu compra en sucursal."
+    />
+    <meta name="theme-color" content="#29358f" />
+    <title>Todos los productos | Súper Yacón</title>
+    <link rel="icon" type="image/png" href="img/logo-yacon.png" />
+    <link rel="stylesheet" href="css/catalogostyle.css" />
   </head>
-  <body>
+  <body data-pagina="catalogo">
     <div class="franja">
       <div class="contenedor">
-        Buenos precios. Más cerca de vos.
-        <span>
-          El Salvador
-        </span>
+        <span>Buenos precios. Más cerca de vos.</span
+        ><a href="sucursales.html"
+          >Recogé en tu sucursal <span aria-hidden="true">↗</span></a
+        >
       </div>
     </div>
     <header class="cabecera">
       <div class="contenedor cabecera-interior">
-        <a class="marca" href="index.html">
-          <img src="img/logo-yacon.png" alt="Súper Yacón — Inicio" width="447" height="447">
-        </a>
-        <nav>
-          <a href="index.html">
-            Inicio
-          </a>
-          <a class="actual" href="catalogo.html">
-            Catálogo
-          </a>
-          <a href="sucursales.html">
-            Sucursales
-          </a>
-          <a href="contacto.html">
-            Contacto
-          </a>
-        </nav>
-        <a class="boton boton-pequeno visita" href="sucursales.html">
-          Encontrá tu Yacón
-          <span>
-            ↗
-          </span>
-        </a>
+        <a class="marca" href="index.html"
+          ><img
+            src="img/logo-yacon.png"
+            alt="Súper Yacón — Inicio"
+            width="447"
+            height="447"
+        /></a>
+        <form class="buscador" action="catalogo.html" role="search">
+          <label class="solo-lectura" for="busqueda">Buscar productos</label
+          ><input
+            id="busqueda"
+            name="q"
+            type="search"
+            placeholder="¿Qué necesitás para tu casa?"
+            maxlength="100"
+          /><button type="submit" aria-label="Buscar">
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <circle cx="10" cy="10" r="6" />
+              <path d="m15 15 6 6" />
+            </svg>
+          </button>
+        </form>
+        <div class="cabecera-acciones">
+          <a class="acceso-cuenta" href="cuenta.html"
+            ><svg
+              viewBox="0 0 24 24"
+              width="23"
+              height="23"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="7" r="4" />
+              <path d="M4 23v-3a8 8 0 0 1 16 0v3" /></svg
+            ><span data-cuenta>Ingresar</span></a
+          ><a class="acceso-carrito" href="compra.html"
+            ><svg
+              viewBox="0 0 24 24"
+              width="25"
+              height="25"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              aria-hidden="true"
+            >
+              <path d="M2 3h3l3 13h12l2-10H6" />
+              <circle cx="10" cy="21" r="1" />
+              <circle cx="19" cy="21" r="1" /></svg
+            ><span>Mi carrito</span><strong data-cantidad-carrito>0</strong></a
+          >
+        </div>
       </div>
-    </header>
-    <main id="contenido">
-      <section class="intro">
+      <nav class="navegacion" aria-label="Navegación principal">
         <div class="contenedor">
-          <p class="ruta">
-            <a href="index.html">
-              Inicio
-            </a>
-            / Catálogo
-          </p>
-          <h1>
-            Variedad que va con vos.
-          </h1>
-          <p>
-            Conocé una selección de productos publicados por Súper Yacón. Comprá y consultá precios vigentes directamente en la tienda.
-          </p>
+          <a href="index.html" data-nav="index">Inicio</a
+          ><a href="catalogo.html" data-nav="catalogo" aria-current="page"
+            >Todos los productos</a
+          ><a href="catalogo.html?ofertas=1">Ofertas</a
+          ><a href="sucursales.html" data-nav="sucursales">Sucursales</a
+          ><a href="contacto.html" data-nav="contacto">Contacto</a
+          ><a href="admin.html" data-admin hidden>Administrar</a
+          ><span class="nav-nota">Tu compra, lista para recoger</span>
         </div>
-      </section>
-      <div class="contenedor seccion">
-        <p class="nota">Precios publicados en diciembre de 2024 (USD). Consultá el precio y la disponibilidad actuales en tienda.</p>
-        <nav class="categorias-catalogo">
-          <a href="#despensa">
-            Tu despensa ↓
-          </a>
-          <a href="#hogar">
-            Limpieza y hogar ↓
-          </a>
-        </nav>
-        <section id="despensa" class="grupo-productos">
-          <p class="etiqueta">
-            VARIEDAD PARA CADA DÍA
-          </p>
-          <h2>
-            Básicos para tu despensa
-          </h2>
-          <div class="productos">
-            <article class="producto">
-              <img class="producto-imagen" src="img/productos/pinito.png" alt="Ilustración de bolsa de leche en polvo Pinito Dos Pinos de 350 g" width="1024" height="1024" loading="lazy">
-              <h3>
-                Leche Pinito Dos Pinos
-              </h3>
-              <p class="presentacion">
-                350 g · 1 unidad
-              </p>
-              <p class="precio-fecha">Precio publicado · dic. 2024</p>
-              <p class="precio">
-                <span class="moneda">
-                  $
-                </span>
-                2.99
-              </p>
-              
-              <p class="nota">
-                Consultá el precio actual en tienda.
-              </p>
-              <a class="fuente-producto" href="https://www.facebook.com/photo/?fbid=1131907138639796">
-                Ver publicación ↗
-              </a>
-            </article>
-            <article class="producto">
-              <img class="producto-imagen" src="img/productos/chiky.png" alt="Ilustración de paquete de galletas Chiky chocolate de 480 g" width="1024" height="1024" loading="lazy">
-              <h3>
-                Galletas Chiky chocolate
-              </h3>
-              <p class="presentacion">
-                480 g · 1 unidad
-              </p>
-              <p class="precio-fecha">Precio publicado · dic. 2024</p>
-              <p class="precio">
-                <span class="moneda">
-                  $
-                </span>
-                2.30
-              </p>
-              
-              <p class="nota">
-                Consultá el precio actual en tienda.
-              </p>
-              <a class="fuente-producto" href="https://www.facebook.com/photo/?fbid=1131907085306468">
-                Ver publicación ↗
-              </a>
-            </article>
-            <article class="producto">
-              <img class="producto-imagen" src="img/productos/naturas.png" alt="Ilustración de dos bolsas de frijoles Natura’s de 380 g" width="1024" height="1024" loading="lazy">
-              <h3>
-                Frijoles Natura’s
-              </h3>
-              <p class="presentacion">
-                2 unidades de 380 g
-              </p>
-              <p class="precio-fecha">Precio publicado · dic. 2024</p>
-              <p class="precio">
-                <span class="moneda">
-                  $
-                </span>
-                2.70
-              </p>
-              
-              <p class="nota">
-                Consultá el precio actual en tienda.
-              </p>
-              <a class="fuente-producto" href="https://www.facebook.com/photo/?fbid=1131907078639802">
-                Ver publicación ↗
-              </a>
-            </article>
-          </div>
-        </section>
-        <section id="hogar" class="grupo-productos">
-          <p class="etiqueta">
-            VARIEDAD PARA CADA DÍA
-          </p>
-          <h2>
-            Cuidá cada rincón de tu hogar
-          </h2>
-          <div class="productos">
-            <article class="producto">
-              <img class="producto-imagen" src="img/productos/magia.png" alt="Ilustración de desinfectante Magia Blanca Lavanda de 3785 ml" width="1024" height="1024" loading="lazy">
-              <h3>
-                Desinfectante Magia Blanca
-              </h3>
-              <p class="presentacion">
-                Lavanda · 3785 ml · 1 unidad
-              </p>
-              <p class="precio-fecha">Precio publicado · dic. 2024</p>
-              <p class="precio">
-                <span class="moneda">
-                  $
-                </span>
-                5.99
-              </p>
-              
-              <p class="nota">
-                Consultá el precio actual en tienda.
-              </p>
-              <a class="fuente-producto" href="https://www.facebook.com/photo/?fbid=1131907145306462">
-                Ver publicación ↗
-              </a>
-            </article>
-            <article class="producto">
-              <img class="producto-imagen" src="img/productos/zagaz.png" alt="Ilustración de dos tarros de lavaplatos Zagaz Frutos Rojos de 400 g" width="1024" height="1024" loading="lazy">
-              <h3>
-                Lavaplatos Zagaz
-              </h3>
-              <p class="presentacion">
-                Frutos rojos · 2 unidades de 400 g
-              </p>
-              <p class="precio-fecha">Precio publicado · dic. 2024</p>
-              <p class="precio">
-                <span class="moneda">
-                  $
-                </span>
-                1.30
-              </p>
-              
-              <p class="nota">
-                Consultá el precio actual en tienda.
-              </p>
-              <a class="fuente-producto" href="https://www.facebook.com/photo/?fbid=1131907125306464">
-                Ver publicación ↗
-              </a>
-            </article>
-            <article class="producto">
-              <img class="producto-imagen" src="img/productos/elite.png" alt="Ilustración de dos rollos de papel toalla Elite de 160 hojas" width="1024" height="1024" loading="lazy">
-              <h3>
-                Papel toalla Elite
-              </h3>
-              <p class="presentacion">
-                2 rollos de 160 hojas cada uno
-              </p>
-              <p class="precio-fecha">Precio publicado · dic. 2024</p>
-              <p class="precio">
-                <span class="moneda">
-                  $
-                </span>
-                2.00
-              </p>
-              
-              <p class="nota">
-                Consultá el precio actual en tienda.
-              </p>
-              <a class="fuente-producto" href="https://www.facebook.com/photo/?fbid=1131907105306466">
-                Ver publicación ↗
-              </a>
-            </article>
-          </div>
-        </section>
-        <section class="consejo">
-          <div>
-            <p class="etiqueta">
-              MÁS VALOR EN CADA COMPRA
-            </p>
-            <h2>
-              Una buena lista ayuda a ahorrar.
-            </h2>
-            <p>
-              Compará el tamaño de cada presentación y consultá las promociones vigentes antes de comprar. Los paquetes de dos unidades están identificados en el catálogo.
-            </p>
-          </div>
-          <a class="boton boton-azul" href="https://www.facebook.com/superyacon/">
-            Consultar novedades en Facebook ↗
-          </a>
-        </section>
+      </nav>
+    </header>
+    <div class="titulo-pagina">
+      <div class="contenedor">
+        <p class="ruta">
+          <a href="index.html">Inicio</a> / Todos los productos
+        </p>
+        <h1>Todos los productos</h1>
+        <p>Lo de siempre para tu casa, a un clic de tu carrito.</p>
       </div>
+    </div>
+    <main class="contenedor seccion">
+      <form id="filtros" class="filtros">
+        <label
+          >Buscar en el catálogo<input
+            name="texto"
+            type="search"
+            placeholder="Leche, frijoles, galletas…"
+            maxlength="100" /></label
+        ><label
+          >Categoría<select name="categoria">
+            <option value="">Todas las categorías</option>
+            <option>Despensa</option>
+            <option>Lácteos</option>
+            <option>Bebidas</option>
+            <option>Limpieza</option>
+            <option>Cuidado personal</option>
+          </select></label
+        ><label
+          >Ordenar<select name="orden">
+            <option value="">Relevancia</option>
+            <option value="menor">Menor precio</option>
+            <option value="mayor">Mayor precio</option>
+            <option value="nombre">Nombre: A a Z</option>
+          </select></label
+        ><label class="check"
+          ><input name="ofertas" type="checkbox" /> Solo ofertas</label
+        ><button type="reset" class="enlace-boton">Limpiar filtros</button>
+      </form>
+      <div class="encabezado-seccion resultados">
+        <p id="cantidad-resultados" aria-live="polite"></p>
+        <p>Precio por presentación</p>
+      </div>
+      <p id="estado-productos" class="estado" role="status">
+        Cargando productos…
+      </p>
+      <button id="reintentar-productos" class="boton secundario" hidden>
+        Volver a intentar
+      </button>
+      <div id="productos" class="rejilla-productos" aria-busy="true"></div>
     </main>
+
     <footer class="pie">
-      <div class="contenedor pie-principal">
+      <div class="contenedor pie-interior">
         <div class="pie-marca">
-          <img src="img/logo-yacon.png" alt="Súper Yacón" width="447" height="447">
+          <img
+            src="img/logo-yacon.png"
+            width="64"
+            height="64"
+            alt="Súper Yacón"
+          />
           <p>
-            Variedad para tu hogar.
-            <br>
-            Precios accesibles, cerca de vos.
+            Lo que necesitás para tu hogar.<br /><strong
+              >Buenos precios, cerca de vos.</strong
+            >
           </p>
         </div>
         <div>
-          <h2>
-            Explorá
-          </h2>
-          <a href="catalogo.html">
-            Catálogo
-          </a>
-          <a href="sucursales.html">
-            Sucursales
-          </a>
-          <a href="contacto.html">
-            Contacto
-          </a>
+          <h2>Comprá en Yacón</h2>
+          <a href="catalogo.html">Todos los productos</a
+          ><a href="catalogo.html?ofertas=1">Ofertas</a
+          ><a href="sucursales.html">Nuestras sucursales</a>
         </div>
         <div>
-          <h2>
-            Hablemos
-          </h2>
-          <a href="tel:+50323140811">
-            +503 2314 0811
-          </a>
-          <a href="mailto:ventas@superyacon.com">
-            ventas@superyacon.com
-          </a>
-          <a href="https://www.facebook.com/superyacon/">
-            Facebook de Súper Yacón ↗
-          </a>
-          <a href="https://www.instagram.com/superyacon/">
-            Instagram de Súper Yacón ↗
-          </a>
+          <h2>Estamos para ayudarte</h2>
+          <a href="tel:+50323140811">2314 0811</a
+          ><a href="mailto:ventas@superyacon.com">ventas@superyacon.com</a
+          ><a
+            href="https://www.facebook.com/superyacon/"
+            target="_blank"
+            rel="noopener"
+            >Facebook ↗</a
+          ><a
+            href="https://www.instagram.com/superyacon/"
+            target="_blank"
+            rel="noopener"
+            >Instagram ↗</a
+          >
         </div>
       </div>
-      <div class="contenedor pie-legal">
-        <p>Súper Yacón · Variedad y precios accesibles, cerca de vos.</p>
+      <div class="contenedor pie-base">
+        <span>© Súper Yacón</span
+        ><span>El Salvador · Precios en dólares estadounidenses</span>
       </div>
     </footer>
+    <div id="aviso" class="aviso" role="status" aria-live="polite"></div>
+    <noscript
+      ><p class="contenedor estado">
+        Activá JavaScript en tu navegador para consultar productos y realizar
+        compras.
+      </p></noscript
+    >
+    <script type="module" src="js/catalogo.js"></script>
   </body>
 </html>
