@@ -1,0 +1,23 @@
+{
+  "firestore": {"rules": "firestore.rules", "indexes": "firestore.indexes.json"},
+  "hosting": {
+    "public": "public",
+    "ignore": ["**/.*", "**/node_modules/**"],
+    "headers": [
+      {"source": "**", "headers": [
+        {"key": "X-Content-Type-Options", "value": "nosniff"},
+        {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
+        {"key": "X-Frame-Options", "value": "DENY"}
+      ]},
+      {"source": "**/*.@(js|html|css)", "headers": [{"key": "Cache-Control", "value": "no-cache"}]},
+      {"source": "/img/**", "headers": [{"key": "Cache-Control", "value": "public,max-age=604800"}]}
+    ]
+  },
+  "emulators": {
+    "auth": {"host": "127.0.0.1", "port": 9098},
+    "firestore": {"host": "127.0.0.1", "port": 8085},
+    "hosting": {"host": "127.0.0.1", "port": 8765},
+    "ui": {"enabled": false},
+    "singleProjectMode": true
+  }
+}

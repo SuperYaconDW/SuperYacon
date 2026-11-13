@@ -1,0 +1,18 @@
+{
+  "name": "super-yacon-desafio-2",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "firebase emulators:start --only hosting --project yaconbd",
+    "emuladores": "firebase emulators:start --only auth,firestore,hosting --project demo-yacon",
+    "test": "firebase emulators:exec --only auth,firestore --project demo-yacon \"node --test --test-concurrency=1 tests/*.test.mjs\"",
+    "validar": "node scripts/validar.mjs",
+    "publicar": "firebase deploy --only firestore:rules,firestore:indexes,hosting --project yaconbd"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "6.0.0",
+    "firebase": "13.2.0",
+    "firebase-tools": "15.35.0"
+  }
+}

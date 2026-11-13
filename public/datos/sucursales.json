@@ -1,0 +1,7 @@
+[
+  {"id":"san-jose-villanueva","nombre":"San José Villanueva","zona":"La Libertad","referencia":"Encontranos en San José Villanueva.","telefono":"23140811","mapa":"https://www.google.com/maps/search/?api=1&query=Super+Yacon+San+Jose+Villanueva+El+Salvador","activa":true},
+  {"id":"zaragoza","nombre":"Zaragoza","zona":"La Libertad","referencia":"Encontranos en Zaragoza.","telefono":"23140811","mapa":"https://www.google.com/maps/search/?api=1&query=Super+Yacon+Zaragoza+El+Salvador","activa":true},
+  {"id":"rosario-de-mora","nombre":"Rosario de Mora","zona":"San Salvador","referencia":"Encontranos en Rosario de Mora.","telefono":"23140811","mapa":"https://www.google.com/maps/search/?api=1&query=Super+Yacon+Rosario+de+Mora+El+Salvador","activa":true},
+  {"id":"comasagua","nombre":"Comasagua","zona":"La Libertad","referencia":"Frente a la alcaldía municipal.","telefono":"23140811","mapa":"https://www.google.com/maps/search/?api=1&query=Super+Yacon+Comasagua+El+Salvador","activa":true},
+  {"id":"huizucar","nombre":"Huizúcar","zona":"La Libertad","referencia":"Avenida Santos Guzmán, calle principal.","telefono":"23140811","mapa":"https://www.google.com/maps/search/?api=1&query=Super+Yacon+Huizucar+El+Salvador","activa":true}
+]

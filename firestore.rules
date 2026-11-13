@@ -1,0 +1,125 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function conectado() { return request.auth != null; }
+    function esAdmin() {
+      return conectado() && get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol == 'admin';
+    }
+    function nombreValido(nombre) { return nombre is string && nombre.size() >= 2 && nombre.size() <= 80; }
+
+    match /usuarios/{uid} {
+      allow get: if conectado() && (uid == request.auth.uid || esAdmin());
+      allow list: if esAdmin();
+      allow create: if conectado() && uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['nombre', 'rol', 'creadoEn'])
+        && nombreValido(request.resource.data.nombre)
+        && request.resource.data.rol == 'cliente' && request.resource.data.creadoEn == request.time;
+      allow update: if conectado() && uid == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['nombre'])
+        && nombreValido(request.resource.data.nombre);
+      allow delete: if false;
+    }
+
+    function productoValido(p) {
+      return p.keys().hasAll(['nombre','categoria','presentacion','imagen','precioCentavos','precioAnteriorCentavos','stock','activo','destacado','ultimoPedidoId','actualizadoEn'])
+        && p.keys().hasOnly(['nombre','categoria','presentacion','imagen','precioCentavos','precioAnteriorCentavos','stock','activo','destacado','ultimoPedidoId','actualizadoEn'])
+        && p.nombre is string && p.nombre.size() > 1 && p.nombre.size() <= 140
+        && p.categoria in ['Despensa','Lácteos','Bebidas','Limpieza','Cuidado personal']
+        && p.presentacion is string && p.presentacion.size() > 0 && p.presentacion.size() <= 100
+        && p.imagen is string && p.imagen.matches('img/productos/[a-z0-9-]+[.]webp')
+        && p.precioCentavos is int && p.precioCentavos > 0 && p.precioCentavos <= 1000000
+        && p.precioAnteriorCentavos is int && p.precioAnteriorCentavos <= 1000000
+        && (p.precioAnteriorCentavos == 0 || p.precioAnteriorCentavos > p.precioCentavos)
+        && p.stock is int && p.stock >= 0 && p.stock <= 9999
+        && p.activo is bool && p.destacado is bool && p.ultimoPedidoId is string
+        && p.actualizadoEn == request.time;
+    }
+
+    // El cliente solo puede descontar stock si CREA un pedido válido en la misma operación.
+    // No puede volver a utilizar un pedido anterior para descontar inventario.
+    function descuentoValido(productoId) {
+      let nuevo = request.resource.data;
+      let pedidoRuta = /databases/$(database)/documents/pedidos/$(nuevo.ultimoPedidoId);
+      let pedido = getAfter(pedidoRuta).data;
+      let item = pedido.items[productoId];
+      return conectado()
+        && nuevo.diff(resource.data).affectedKeys().hasOnly(['stock','ultimoPedidoId','actualizadoEn'])
+        && !exists(pedidoRuta)
+        && pedido.clienteId == request.auth.uid && productoId in pedido.productoIds
+        && item.keys().hasOnly(['nombre','cantidad','precioCentavos'])
+        && item.cantidad is int && item.cantidad >= 1 && item.cantidad <= 99
+        && item.nombre == resource.data.nombre && item.precioCentavos == resource.data.precioCentavos
+        && nuevo.stock == resource.data.stock - item.cantidad
+        && nuevo.stock >= 0 && nuevo.actualizadoEn == request.time;
+    }
+    match /productos/{productoId} {
+      allow get, list: if resource.data.activo == true || esAdmin();
+      // El administrador puede consultar IDs aún inexistentes para una carga repetible.
+      allow get: if esAdmin();
+      allow create: if esAdmin() && productoId.matches('[a-z0-9-]{1,60}') && productoValido(request.resource.data);
+      allow update: if descuentoValido(productoId) || (esAdmin() && productoValido(request.resource.data));
+      allow delete: if esAdmin();
+    }
+
+    function sucursalValida(s) {
+      return s.keys().hasOnly(['nombre','zona','referencia','telefono','mapa','activa'])
+        && nombreValido(s.nombre) && s.zona is string && s.zona.size() <= 100
+        && s.referencia is string && s.referencia.size() <= 200
+        && s.telefono is string && s.telefono.matches('[0-9]{8}')
+        && s.mapa is string && s.mapa.matches('https://www[.]google[.]com/maps/.*') && s.activa is bool;
+    }
+    match /sucursales/{id} {
+      allow get, list: if resource.data.activa == true || esAdmin();
+      allow get: if esAdmin();
+      allow create, update: if esAdmin() && sucursalValida(request.resource.data);
+      allow delete: if esAdmin();
+    }
+
+    // Se valida cada línea mediante el producto DESPUÉS de la transacción.
+    // Su ultimoPedidoId obliga a que el producto se actualice junto con este pedido.
+    function lineaValida(p, indice, pedidoId) {
+      let id = p.productoIds[indice];
+      let producto = getAfter(/databases/$(database)/documents/productos/$(id)).data;
+      // El producto valida cantidad y precio; aquí comprobamos que ambos se escriben juntos.
+      return producto.activo && producto.ultimoPedidoId == pedidoId && producto.actualizadoEn == request.time;
+    }
+    function subtotal(p, i) {
+      return p.productoIds.size() > i
+        ? p.items[p.productoIds[i]].cantidad * p.items[p.productoIds[i]].precioCentavos : 0;
+    }
+    function pedidoValido(p, pedidoId) {
+      let n = p.productoIds.size();
+      let sucursal = get(/databases/$(database)/documents/sucursales/$(p.sucursalId)).data;
+      return p.keys().hasOnly(['clienteId','nombreCliente','sucursalId','nombreSucursal','productoIds','items','totalCentavos','estado','metodoPago','creadoEn'])
+        && p.clienteId == request.auth.uid
+        && pedidoId.matches(request.auth.uid + '_[a-f0-9-]{36}')
+        && nombreValido(p.nombreCliente)
+        && p.nombreCliente == get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.nombre
+        && sucursal.activa && p.nombreSucursal == sucursal.nombre
+        && p.productoIds is list && n >= 1 && n <= 8 && p.productoIds.toSet().size() == n
+        && p.items is map && p.items.size() == n && p.items.keys().hasAll(p.productoIds)
+        && p.estado == 'recibido' && p.metodoPago == 'tarjeta-predefinida' && p.creadoEn == request.time
+        && lineaValida(p, 0, pedidoId)
+        && (n < 2 || lineaValida(p, 1, pedidoId)) && (n < 3 || lineaValida(p, 2, pedidoId))
+        && (n < 4 || lineaValida(p, 3, pedidoId)) && (n < 5 || lineaValida(p, 4, pedidoId))
+        && (n < 6 || lineaValida(p, 5, pedidoId)) && (n < 7 || lineaValida(p, 6, pedidoId))
+        && (n < 8 || lineaValida(p, 7, pedidoId))
+        && p.totalCentavos is int && p.totalCentavos > 0
+        && p.totalCentavos == subtotal(p,0)+subtotal(p,1)+subtotal(p,2)+subtotal(p,3)+subtotal(p,4)+subtotal(p,5)+subtotal(p,6)+subtotal(p,7);
+    }
+    match /pedidos/{pedidoId} {
+      allow get: if conectado() && (
+        (resource == null && pedidoId.matches(request.auth.uid + '_[a-f0-9-]{36}'))
+        || resource.data.clienteId == request.auth.uid || esAdmin());
+      allow list: if conectado() && (resource.data.clienteId == request.auth.uid || esAdmin());
+      allow create: if conectado() && pedidoValido(request.resource.data, pedidoId);
+      allow update: if esAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['estado'])
+        && ((resource.data.estado == 'recibido' && request.resource.data.estado == 'preparando')
+          || (resource.data.estado == 'preparando' && request.resource.data.estado == 'listo')
+          || (resource.data.estado == 'listo' && request.resource.data.estado == 'entregado'));
+      allow delete: if false;
+    }
+    match /{documento=**} { allow read, write: if false; }
+  }
+}
